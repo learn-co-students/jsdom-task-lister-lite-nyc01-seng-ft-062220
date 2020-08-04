@@ -1,72 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
   
   //event listener for the submit button
-  const newTaskForm = document.getElementById("create-task-form");
-  const elementTask = document.getElementById("new-task-description");
-  const formList = document.getElementById("list");
+  const main = document.querySelector("#main-content");
+  const taskForm = document.querySelector("#create-task-form");
+  const taskList = document.querySelector("#tasks");
   const colorList = document.getElementById("cars");
 
 
-  newTaskForm.addEventListener("submit", (x) => {
-    x.preventDefault(); 
+  taskForm.addEventListener("submit", (e) => {
+    e.preventDefault(); 
     //add logic to grab new-task-description and add to tasksUl
-      let ul = document.getElementById("list");
-      let li = document.createElement("li");
-      let button = document.createElement("button");
-      button.innerHTML = "delete";
-      li.appendChild(document.createTextNode(elementTask.value));
-      li.appendChild(button);
-      li.className = colorList.value; //assign color
-      ul.appendChild(li);
+      const newTask = document.querySelector("#new-task-description").value; //asign text
+      const textColor = colorList.value; //assign color
 
-      button.addEventListener("click", function(e){
-        li.remove();
-      });
+    //create it onto each list node
+    taskList.innerHTML += `<li class=${textColor}> ${newTask}
+      <button data-action="delete"> x </button>
+    </li>`
+
+    taskForm.reset();
+    //apply the sort!
+    sortList(taskList);
+  })  
+
+  taskList.addEventListener("click", function(e){
+      if (e.target.dataset.action === "delete"){
+        //go up one to parent element (li)
+          e.target.parentElement.remove();
+      }
   })
 
-
-  function deleteItem(sel_id) {
-    formList.addEventListener("click", (x) => {
-      x.preventDefault(); 
-      let li = document.getElementById("li")[sel_id];
-      li.remove();
-    })
-  }
-
-  function sortList() {
-    var list, i, switching, b, shouldSwitch;
-    list = document.getElementById("tasks");
-    switching = true;
-    /* Make a loop that will continue until
-    no switching has been done: */
-    while (switching) {
-      // start by saying: no switching is done:
-      switching = false;
-      b = list.getElementsByTagName("li");
-      // Loop through all list-items:
-      for (i = 0; i < (b.length - 1); i++) {
-        // start by saying there should be no switching:
-        shouldSwitch = false;
-        /* check if the next item should
-        switch place with the current item: */
-        
-        if (Number(b[i].innerHTML) > Number(b[i + 1].innerHTML)) {
-          /* if next item is numerically
-          lower than current item, mark as a switch
-          and break the loop: */
-          shouldSwitch = true;
-          break;
-        }
+  function sortList(){
+    const tasks = document.querySelector('#tasks'),
+    items = document.querySelectorAll('#tasks > li');
+    for (let i = 0, arr = ['red-color', 'yellow-color', 'green-color']; i < arr.length; i++) {
+      for (let j = 0; j < items.length; j++) {
+          if (~(" " + items[j].className + " ").indexOf(" " + arr[i] + " "))
+              tasks.appendChild(items[j]);
       }
-      if (shouldSwitch) {
-        /* If a switch has been marked, make the switch
-        and mark the switch as done: */
-        b[i].parentNode.insertBefore(b[i + 1], b[i]);
-        switching = true;
-      }
-    }
   }
-
+  }
 
 
 });

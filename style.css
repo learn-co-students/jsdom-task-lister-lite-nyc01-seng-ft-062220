@@ -38,10 +38,13 @@ button {
 
 .red-color {
   color: red;
+  text-shadow: 1px 1px #8a8686;
 }
 .yellow-color {
   color: yellow;
+  text-shadow: 1px 1px #8a8686;
 }
 .green-color {
   color: green;
+  text-shadow: 1px 1px #c7c7c7;
 }

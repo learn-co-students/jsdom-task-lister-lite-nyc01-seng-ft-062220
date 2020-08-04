@@ -4,17 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const main = document.querySelector("#main-content");
   const taskForm = document.querySelector("#create-task-form");
   const taskList = document.querySelector("#tasks");
-  const colorList = document.getElementById("cars");
+  const colorList = document.getElementById("colors");
 
 
   taskForm.addEventListener("submit", (e) => {
     e.preventDefault(); 
     //add logic to grab new-task-description and add to tasksUl
       const newTask = document.querySelector("#new-task-description").value; //asign text
+      const newUser = document.querySelector("#new-user").value; //asign user
       const textColor = colorList.value; //assign color
 
     //create it onto each list node
-    taskList.innerHTML += `<li class=${textColor}> ${newTask}
+    taskList.innerHTML += `<li class=${textColor}> User: ${newUser}, Task:${newTask}
       <button data-action="delete"> x </button>
     </li>`
 

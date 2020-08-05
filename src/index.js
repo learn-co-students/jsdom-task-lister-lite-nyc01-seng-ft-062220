@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const colorList = document.getElementById("colors");
 
 
-  taskForm.addEventListener("submit", (e) => {
+  taskForm.addEventListener("submit", e => {
     e.preventDefault(); 
     //add logic to grab new-task-description and add to tasksUl
       const newTask = document.querySelector("#new-task-description").value; //asign text
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sortList(taskList);
   })  
 
-  taskList.addEventListener("click", function(e){
+  taskList.addEventListener("click", e => {
       if (e.target.dataset.action === "delete"){
         //go up one to parent element (li)
           e.target.parentElement.remove();

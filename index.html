@@ -10,18 +10,25 @@
     <h1>Task Lister Lite™️</h1>
 
     <form id="create-task-form" action="#" method="post">
+      <label for="new-user">User Name:</label>
+      <input type="text" id="new-user" name="new-user" placeholder="username">
       <label for="new-task-description">Task description:</label>
       <input type="text" id="new-task-description" name="new-task-description" placeholder="description">
+      <label for="colors">Choose a color:</label>
+      <select id="colors" name="colors">
+        <option value="red-color">Red</option>
+        <option value="yellow-color">Yellow</option>
+        <option value="green-color">Green</option>
+      </select>
       <input type="submit" value="Create New Task">
     </form>
-
     <div id="list">
       <h2>My Todos</h2>
       <ul id="tasks">
       </ul>
     </div>
-
     <script src="./src/index.js"></script>
+    <script>scr="./src/task.js" </script>
   </div>
 
 </body>

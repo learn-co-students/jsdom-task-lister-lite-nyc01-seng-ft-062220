@@ -44,6 +44,7 @@ function makeDropdown(dropdown, text, listbullet){
   }
 // console.log(text)
   dropdown.addEventListener("change", function(e){
+    console.log(event.target.value)
     listbullet.style.color = `${event.target.value}`
     listbullet.className = `${event.target.value}`
     console.dir(listbullet)
